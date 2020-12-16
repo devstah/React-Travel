@@ -7,7 +7,8 @@
     "build": "webpack",
     "build:dev": "npm run build -- --mode=development --watch",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start:dev": "nodemon server.js --ignore dist/ --ignore src/ &npm run build:dev"
+    "start:dev": "nodemon server.js --ignore dist/ --ignore src/ &npm run build:dev",
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
@@ -25,7 +26,6 @@
     "axios": "^0.21.0",
     "babel-loader": "^8.2.2",
     "body-parser": "^1.19.0",
-    "method-override": "^3.0.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "webpack": "^5.10.0",

@@ -1,11 +1,11 @@
 body{
-  font-family: 'Courier New', Courier, monospace;
-  font-weight:bold;
+  font-family: Arial, Helvetica, sans-serif;
+  /* font-weight:bold; */
   color: black;
 }
 
 button {
-  font-family: 'Courier New', Courier, monospace;
+  font-family: Arial, Helvetica, sans-serif;
   font-weight:bold;
   color: black;
   border: solid black 2px;
@@ -13,7 +13,7 @@ button {
 }
 
 h1 {
-  font-family: 'Courier New', Courier, monospace;
+  font-family: Arial, Helvetica, sans-serif;
   color: teal ;
   font-weight:bold
 }
@@ -31,4 +31,14 @@ img{
   border: solid black 3px;
   margin-top: 1rem;
   height: 30%;
+}
+
+#cities_list{
+  list-style-type: none;
+}
+
+img{
+  width: 40%;
+  height: 30%;
+  border: solid black 2px;
 }

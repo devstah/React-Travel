@@ -6,7 +6,6 @@ const bodyparser = require("body-parser");
 
 
 app.use(express.urlencoded({ extended: false }));//parses incoming request ...based on body-parser ...
-app.use(require("method-override")("_method")); //a workaround ... use get/post/put/delete
 
 
 app.use("/dist", express.static(path.join(__dirname, "dist"))); //dir we do want to expose to the client

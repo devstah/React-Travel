@@ -13,18 +13,19 @@ class App extends Component{
 
   async componentDidMount(){
    const cities = (await axios.get('/api/cities')).data
-  //   console.log(cities) - an array of objects of the data!
+    // console.log(cities) //- an array of objects of the data!
    this.setState({cities}); //setting the array here
     window.addEventListener("hashchange", () => {
       this.setState({ selectedUserId: window.location.hash.slice("1")});
+      //all that happens is the state changes
     });
     this.setState({ selectedUserId: window.location.hash.slice(1) });
   }
   render(){
-    const {cities, selectedUserId} = this.state
+    const {cities, selectedUserId} = this.state//destructuring line
     return (
       <div>
-      <ul>
+      <ul id="cities_list">
         {
           cities.map (city => {
             return (
@@ -40,9 +41,9 @@ class App extends Component{
         <div id="about">
         <br></br>
         {
-          !!selectedUserId && <User selectedUserId={selectedUserId} />
+          /* !!selectedUserId && */<User selectedUserId={selectedUserId} />
         }
-          <br></br>
+        <br></br>
         </div>
     </div>
     )
