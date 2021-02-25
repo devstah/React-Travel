@@ -1,50 +1,49 @@
 import React, {Component} from "react";
 import axios from "axios";
 import User from "./User";
+import RandomMeal from "./RandomMeal";
+import {Link} from "react-router-dom";
 
 class App extends Component{
   constructor(){
     super();
     this.state = {
-      cities: [],
-      selectedUserId: ""
+      meals: {},
     }
   }
 
   async componentDidMount(){
-   const cities = (await axios.get('/api/cities')).data
-    // console.log(cities) //- an array of objects of the data!
-   this.setState({cities}); //setting the array here
-    window.addEventListener("hashchange", () => {
-      this.setState({ selectedUserId: window.location.hash.slice("1")});
-      //all that happens is the state changes
-    });
-    this.setState({ selectedUserId: window.location.hash.slice(1) });
+
+    const meals = (await axios.get('https://www.themealdb.com/api/json/v1/1/random.php')).data;
+
+    this.setState({meals: meals}); //setting the array here
   }
+
+  async submit(ev){
+    //takes in ev as an argument
+    //when you submit a form, the first line should be... default reaction will be for form to refresh the page.. dont want that to happen
+    ev.preventDefault();
+  }
+
   render(){
-    const {cities, selectedUserId} = this.state//destructuring line
+    const {meals} = this.state//destructuring line
+    const testProp = "testing";
+    console.log("the state destructured is", meals);
     return (
       <div>
-      <ul id="cities_list">
+        <form onSubmit={(ev) => this.submit(ev)}>
+          <br></br>
+          {/* <Link to="/randomMeal">Tell me what's for dinner!</Link> */}
+
+          <button type="submit" className="submit-btn">Tell me what's for dinner!</button>
+          <div>
+          </div>
+        </form>
         {
-          cities.map (city => {
-            return (
-              <li className={selectedUserId*1 === city.id ? "selected" : ""} key={city.id}>
-                <a href = {`#${city.id}`}>
-                {city.name}
-                </a>
-              </li>
-            )
-          })
+        Object.entries(this.state.meals).length ?
+        <RandomMeal testProp={testProp} mealProp={this.state.meals}/>
+        : {loading}
         }
-      </ul>
-        <div id="about">
-        <br></br>
-        {
-          /* !!selectedUserId && */<User selectedUserId={selectedUserId} />
-        }
-        <br></br>
-        </div>
     </div>
     )
   }

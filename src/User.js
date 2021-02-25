@@ -31,9 +31,6 @@ class User extends Component{
 
   render(){ //this is what will actually show to to the page
     const {city} = this.state; //DESTRUCTURE THIS TO MAKE IT ACCESSIBLE.
-    const imageElem = document.querySelector("img");
-    imageElem.src = city.imgsrc;//back-end tweaking..
-    console.log(imageElem);
     return (
       <div>
         { city.about }
